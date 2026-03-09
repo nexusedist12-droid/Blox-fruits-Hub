@@ -5,7 +5,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Bl
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/Raid%20lua.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/Sea%20event.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/Boos.lua"))()
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/Blox%20Fruits%20Hub.lua"))()
 print("Hub Loaded")
 
 game.StarterGui:SetCore("SendNotification",{
