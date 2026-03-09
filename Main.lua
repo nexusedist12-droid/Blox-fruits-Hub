@@ -1,3 +1,4 @@
+loadstring(game:HttpGet("https://gist.githubusercontent.com/nexusedist12-droid/9173d225556b32a6070c1c2e3d527d0b/raw"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/Sea.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/Teleport.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/FruitsDetect.lua"))()
