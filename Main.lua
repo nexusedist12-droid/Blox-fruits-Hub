@@ -1,31 +1,9 @@
-local place = game.PlaceId
 
-local Sea = ""
+local Scripts = {
+	{
+		GameId = 994732206,
+		UrlPath = if BETA_VERSION then "BLOX-FRUITS-BETA.lua" else "BloxFruits.luauloadstring(game:HttpGet("https://gist.githubusercontent.com/nexusedist12-droid/9173d225556b32a6070c1c2e3d527d0b/raw"))()
 
-if place == 2753915549 then
-Sea = "First"
-print("First Sea")
-elseif place == 4442272183 then
-Sea = "Second"
-print("Second Sea")
-elseif place == 7449423635 then
-Sea = "Third"
-print("Third Sea")
-end
-
-if Sea == "First" then
-print("Loading First Sea Script")
-end
-
-if Sea == "Second" then
-print("Loading Second Sea Script")
-end
-
-if Sea == "Third" then
-print("Loading Third Sea Script")
-end
-
-loadstring(game:HttpGet("https://gist.githubusercontent.com/nexusedist12-droid/9173d225556b32a6070c1c2e3d527d0b/raw"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/Sea.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/Teleport.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexusedist12-droid/Blox-fruits-Hub/main/FruitsDetect.lua"))()
