@@ -1,177 +1,99 @@
-local WindUI = loadstring(game:HttpGet(
-"https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"
-))()
+-- HUB WINDOW
 
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
--- WINDOW
-local Window = WindUI:CreateWindow({
-    Title = "Blox Fruits Hub",
-    Icon = "swords",
-    Author = "Nexus Hub",
-    Folder = "BFHub",
-    Size = UDim2.fromOffset(430,360),
-    Transparent = true
+local Window = redzlib:MakeWindow({
+	Name = "Blox Fruits Hub",
+	SubTitle = "Nexus Hub",
+	SaveFolder = "BloxFruitsHub"
 })
 
--- TABS
-local MainTab = Window:Tab({
-    Title = "Home",
-    Icon = "home"
+-- TAB HOME
+local MainTab = Window:MakeTab({
+	Name = "Home",
+	Icon = "home"
 })
 
-local SettingsTab = Window:Tab({
-    Title = "Settings",
-    Icon = "settings"
+-- TAB FARM
+local FarmTab = Window:MakeTab({
+	Name = "Farm",
+	Icon = "swords"
+})
+
+-- TAB TELEPORT
+local TeleportTab = Window:MakeTab({
+	Name = "Teleport",
+	Icon = "map"
+})
+
+---------------------------------------------------
+-- HOME
+---------------------------------------------------
+
+MainTab:AddButton({
+	Name = "Check Script",
+	Callback = function()
+		print("Blox Fruits Hub Loaded")
+	end
 })
 
 ---------------------------------------------------
 -- FARM
 ---------------------------------------------------
 
-MainTab:Paragraph({
-    Title = "Farm",
-    Desc = "Auto farm options"
+FarmTab:AddToggle({
+	Name = "Auto Farm Level",
+	Default = false,
+	Callback = function(v)
+		_G.AutoFarm = v
+		
+		while _G.AutoFarm do
+			print("Farming level...")
+			task.wait(1)
+		end
+	end
 })
 
-MainTab:Toggle({
-    Title = "Auto Farm Level",
-    Default = false,
-    Callback = function(v)
-        _G.AutoFarm = v
-        while _G.AutoFarm do
-            print("Farming level...")
-            task.wait(1)
-        end
-    end
+FarmTab:AddToggle({
+	Name = "Auto Boss",
+	Default = false,
+	Callback = function(v)
+		print("Auto Boss:",v)
+	end
 })
 
-MainTab:Toggle({
-    Title = "Auto Quest",
-    Default = false,
-    Callback = function(v)
-        print("Auto quest:",v)
-    end
-})
-
-MainTab:Toggle({
-    Title = "Auto Boss",
-    Default = false,
-    Callback = function(v)
-        print("Auto boss:",v)
-    end
-})
-
----------------------------------------------------
--- PLAYER
----------------------------------------------------
-
-MainTab:Paragraph({
-    Title = "Player",
-    Desc = "Player options"
-})
-
-MainTab:Slider({
-    Title = "WalkSpeed",
-    Value = {
-        Min = 16,
-        Max = 200,
-        Default = 16
-    },
-    Callback = function(v)
-        LocalPlayer.Character.Humanoid.WalkSpeed = v
-    end
-})
-
-MainTab:Slider({
-    Title = "JumpPower",
-    Value = {
-        Min = 50,
-        Max = 200,
-        Default = 50
-    },
-    Callback = function(v)
-        LocalPlayer.Character.Humanoid.JumpPower = v
-    end
-})
-
-MainTab:Toggle({
-    Title = "Infinite Energy",
-    Default = false,
-    Callback = function(v)
-        print("Infinite Energy:",v)
-    end
+FarmTab:AddToggle({
+	Name = "Auto Sea Beast",
+	Default = false,
+	Callback = function(v)
+		print("Auto Sea Beast:",v)
+	end
 })
 
 ---------------------------------------------------
 -- TELEPORT
 ---------------------------------------------------
 
-MainTab:Paragraph({
-    Title = "Teleport",
-    Desc = "Teleport options"
+TeleportTab:AddButton({
+	Name = "Teleport Spawn",
+	Callback = function()
+		local player = game.Players.LocalPlayer
+		
+		player.Character.HumanoidRootPart.CFrame =
+		CFrame.new(0,50,0)
+	end
 })
 
-MainTab:Button({
-    Title = "Teleport Spawn",
-    Callback = function()
-        LocalPlayer.Character.HumanoidRootPart.CFrame =
-        CFrame.new(0,50,0)
-    end
-})
+TeleportTab:AddButton({
+	Name = "Teleport Random Player",
+	Callback = function()
 
-MainTab:Button({
-    Title = "Teleport Random Player",
-    Callback = function()
-        local plr = Players:GetPlayers()
-        local target = plr[math.random(1,#plr)]
+		local Players = game:GetService("Players")
+		local plrs = Players:GetPlayers()
+		local target = plrs[math.random(1,#plrs)]
 
-        if target.Character then
-            LocalPlayer.Character.HumanoidRootPart.CFrame =
-            target.Character.HumanoidRootPart.CFrame
-        end
-    end
-})
+		if target.Character then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+			target.Character.HumanoidRootPart.CFrame
+		end
 
----------------------------------------------------
--- FRUIT
----------------------------------------------------
-
-MainTab:Paragraph({
-    Title = "Fruit",
-    Desc = "Fruit options"
-})
-
-MainTab:Toggle({
-    Title = "Fruit ESP",
-    Default = false,
-    Callback = function(v)
-        print("Fruit ESP:",v)
-    end
-})
-
-MainTab:Toggle({
-    Title = "Auto Store Fruit",
-    Default = false,
-    Callback = function(v)
-        print("Auto store:",v)
-    end
-})
-
----------------------------------------------------
--- SETTINGS
----------------------------------------------------
-
-SettingsTab:Button({
-    Title = "Test Notification",
-    Callback = function()
-
-        WindUI:Notify({
-            Title = "Blox Fruits Hub",
-            Content = "Script Loaded",
-            Duration = 3
-        })
-
-    end
+	end
 })
